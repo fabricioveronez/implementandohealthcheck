@@ -3,6 +3,7 @@ version: '3.4'
 services:
   implementandohealthcheck.api:
     image: fabricioveronez/implementandohealthcheckapi
+    container_name: webapi
     build:
       context: .
       dockerfile: ImplementandoHealthcheck.Api/Dockerfile
@@ -40,7 +41,8 @@ services:
       INFLUXDB_USER_PASSWORD: influxPwd
 
   grafana:
-    image: grafana/grafana:5.4.0    
+    image: grafana/grafana:5.4.0 
+    container_name: grafana
     ports:
       - "3000:3000"
     depends_on:
