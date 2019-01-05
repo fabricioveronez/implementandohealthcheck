@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+  implementandohealthcheck.api:
+    image: fabricioveronez/implementandohealthcheckapi
+    build:
+      context: .
+      dockerfile: ImplementandoHealthcheck.Api/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - influxdb
+      - mysql
+    networks:
+      - healthcheck
+  mysql:
+    image: mariadb
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - healthcheck
+    environment:
+      MYSQL_ROOT_PASSWORD: rtg%6548
+      MYSQL_DATABASE: healthcheck
+      MYSQL_USER: healthcheckuser
+      MYSQL_PASSWORD: healthcheckpws
+  influxdb:
+    image: influxdb:1.7.1-alpine
+    container_name: influxdb
+    ports:
+      - "8083:8083"
+      - "8086:8086"
+      - "8090:8090"
+    networks:
+      - healthcheck
+    environment:
+      INFLUXDB_DB: appmetrics
+      INFLUXDB_USER: influxUser
+      INFLUXDB_USER_PASSWORD: influxPwd
+
+  grafana:
+    image: grafana/grafana:5.4.0    
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    networks:
+      - healthcheck
+
+networks:
+  healthcheck:
+    driver: bridge

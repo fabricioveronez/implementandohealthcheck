@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using TrabalhandoComAppMetrics.Api.Models;
+using ImplementandoHealthcheck.Api.Models;
 
-namespace TrabalhandoComAppMetrics.Api.Controllers
+namespace ImplementandoHealthcheck.Api.Controllers
 {
     [Route("api/[controller]")]
     public class ProdutoController : Controller

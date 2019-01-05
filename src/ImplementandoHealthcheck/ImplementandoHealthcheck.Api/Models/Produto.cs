@@ -1,4 +1,4 @@
-namespace TrabalhandoComAppMetrics.Api.Models
+namespace ImplementandoHealthcheck.Api.Models
 {
     public class Produto
     {
