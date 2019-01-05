@@ -34,8 +34,7 @@ namespace ImplementandoHealthcheck.Api
                                     options.InfluxDb.BaseUri = new Uri("http://influxdb:8086");
                                     options.InfluxDb.Database = "appmetrics";
                                     options.InfluxDb.UserName = "influxUser";
-                                    options.InfluxDb.Password = "influxPwd";
-                                    options.FlushInterval = TimeSpan.FromSeconds(30);
+                                    options.InfluxDb.Password = "influxPwd";                                    
                                 })
                                 .Build();
 
